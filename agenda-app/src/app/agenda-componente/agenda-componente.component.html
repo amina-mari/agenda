@@ -1,0 +1,34 @@
+<form class="row d-flex align-items-center flex-column text-center">
+    <div class="form-group col-md-4">
+        <label for="nome">Nome</label>
+        <input class="form-control" type="text" id="nome" name="nome" #nome>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" id="email" name="email" #email>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="telefone">Telefone</label>
+        <input class="form-control" type="number" id="tel" name="tel" #tel>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="nome">Aniversario </label>
+        <input class="form-control" type="text" id="aniver" name="aniver" placeholder="DD/MM" #aniver>
+    </div>
+
+    <button class="btn btn-dark col-md-4" (click)="adicionarContato(nome.value, email.value, tel.value, aniver.value)">Adicionar Contato</button>
+</form>
+
+<section class="container-fluid bg-light row d-flex text-center p-3">
+    <h2>Lista de Contatos</h2>
+    <div class="card col-md-4 p-3" *ngFor="let contato of contatos; let i = index">
+        <span class="bg-primary text-white rounded" >{{i}}</span>
+        <div class="p-3">
+            <p>Nome: <span class="bg-info text-white p-2"> {{contato.nome}}</span></p>
+            <p>Email: <span class="bg-info text-white p-2"> {{contato.email}}</span></p>
+            <p>Telefone: <span class="bg-info text-white p-2"> {{contato.telefone}}</span></p>
+            <p>Aniversario: <span class="bg-info text-white p-2"> {{contato.aniversario}}</span></p>
+        </div>
+    </div>
+</section>
