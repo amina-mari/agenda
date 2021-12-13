@@ -1,23 +1,29 @@
-<form class="row d-flex align-items-center flex-column text-center">
+<form class="row d-flex align-items-center flex-column text-center" #form = "ngForm">
     <div class="form-group col-md-4">
         <label for="nome">Nome</label>
-        <input class="form-control" type="text" id="nome" name="nome" #nome>
+        <input class="form-control" type="text" id="nome" name="nome" #nome = "ngModel" ngModel required minlength="4">
     </div>
 
     <div class="form-group col-md-4">
         <label for="email">Email</label>
-        <input class="form-control" type="text" id="email" name="email" #email>
+        <input class="form-control" type="text" id="email" name="email" #email = "ngModel" ngModel email minlength="5">
     </div>
     <div class="form-group col-md-4">
         <label for="telefone">Telefone</label>
-        <input class="form-control" type="number" id="tel" name="tel" #tel>
+        <input class="form-control" type="number" id="tel" name="tel" #tel = "ngModel" ngModel required>
     </div>
     <div class="form-group col-md-4">
         <label for="nome">Aniversario </label>
-        <input class="form-control" type="text" id="aniver" name="aniver" placeholder="DD/MM" #aniver>
+        <input class="form-control" type="text" id="aniver" name="aniver" placeholder="DD/MM" #aniver = "ngModel" ngModel>
+
+    </div>
+    <div class="alert alert-danger" *ngIf = "form.invalid && (nome.dirty || tel.dirty)">
+
+        Digite algo válido!
+        
     </div>
 
-    <button class="btn btn-dark col-md-4" (click)="adicionarContato(nome.value, email.value, tel.value, aniver.value)">Adicionar Contato</button>
+    <button class="btn btn-dark col-md-4" (click)="adicionarContato(nome.value, email.value, tel.value, aniver.value)" [disabled] = "form.invalid">Adicionar Contato</button>
 </form>
 
 <section class="container-fluid bg-light row d-flex text-center p-3">
